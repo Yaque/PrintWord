@@ -1,0 +1,46 @@
+* {
+    margin: 0px;
+}
+#header {
+    color: green;
+}
+#header h1 {
+    margin-left: 2%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 20px 0px 20px 0px;
+}
+#nav {
+    overflow: hidden;
+    background-color: green;
+}
+#nav ul {
+    float: left;
+    overflow: hidden;
+    list-style-type: none;
+}
+#nav li{
+    float: left;
+    margin-left: 40px;
+}
+#nav a {
+    color: white;
+    text-decoration: none;
+}
+#nav a:hover {
+    padding: 20px;
+    background-color: #44CC44;
+}
+#user_position {
+    float: right;
+    margin-right: 20px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0px;
+    background-color: green;
+    color: white;
+    width: 100%;
+    text-align: center;
+}

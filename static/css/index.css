@@ -1,0 +1,100 @@
+#content {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#content_left {
+    width: 25%;
+    float: left;
+    margin-top: 15%;
+    margin-right: 40px;
+}
+#content_right {
+    float: left;
+    width: 70%;
+    margin-top: 15%;
+    border: 2px solid green;
+    text-align: center;
+}
+
+/*展示区*/
+#score_list {
+    border: 2px solid green;
+    border-radius: 20px;
+    background-color: green;
+}
+#score_list div{
+    margin: 20px;
+    padding: 10px;
+    color: white;
+    border-bottom: 2px solid white;
+    font-size: 22px;
+}
+
+/*比赛区*/
+#score {
+    overflow: hidden;
+}
+#score span {
+    font-size: 60px;
+}
+
+#now_score {
+    color: green;
+    font-size: 50px;
+    float: left;
+}
+#history_best_score {
+    float: right;
+    color: green;
+    font-size: 50px;
+}
+
+#text_now {
+    /*text-align: center;*/
+    font-size: 50px;
+    color: green;
+    border: 2px solid green;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+#text_in {
+    text-align: center;
+    font-size: 40px;
+    border: 2px solid green;
+    border-radius: 20px;
+    outline: none;
+    color: green;
+    margin-top: 20px;
+}
+#text_out {
+    font-size: 40px;
+    color: green;
+    border: 2px solid green;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+#text_out span {
+    padding: 20px;
+    font-size: 50px;
+}
+#btnClear {
+    margin-top: 10px;
+    width: 100px;
+    height: 80px;
+    background-color: green;
+    color: white;
+    border: 2px solid white;
+}
+#btnClear:hover {
+    border: 2px solid green;
+    color: green;
+    background-color: white;
+}

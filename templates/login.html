@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>登录</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/common.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/login.css') }}">
+</head>
+<body>
+	<div id="header">
+		<h1>明达2020打字练习平台</h1>
+	</div>
+	<div id="nav">
+		<ul>
+			<li><a href="/">比赛时刻</a></li>
+			<li><a href="/history">历史最佳</a></li>
+			<li><a href="/bestone">本期最佳</a></li>
+		</ul>
+        <div id="user_position">
+            <a href="/login" id="login_a">登录</a>
+        </div>
+	</div>
+	<div id="content">
+        <div id="login_div">
+            <form action="/login_action" method="post">
+                <label for="md_username">账号：</label><input id="md_username" type="text" placeholder="请输入用户名" name="md_username">
+                <br>
+                <label for="md_password">密码：</label><input id="md_password" type="password" placeholder="请输入用户名" name="md_password">
+                <br>
+                <button id="btn_login">登录</button>
+            </form>
+        </div>
+        <p>{{ resulte_message }}</p>
+	</div>
+	<div id="footer">
+		<p>2020.11.27 by you friend Yaque</p>
+	</div>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/index.js') }}"></script>
+</body>
+</html>

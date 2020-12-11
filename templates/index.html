@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>明达</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/common.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/index.css') }}">
+</head>
+<body leftmargin=0 topmargin=0 οncοntextmenu='return false' οndragstart='return false' onselectstart ='return false' οnselect='document.selection.empty()' οncοpy='document.selection.empty()' onbeforecopy='return false' οnmοuseup='document.selection.empty()'>
+	<div id="header">
+		<h1>明达2020打字练习平台</h1>
+	</div>
+	<div id="nav">
+		<ul>
+			<li><a href="/">比赛时刻</a></li>
+			<li><a href="/history">历史最佳</a></li>
+			<li><a href="/bestone">本期最佳</a></li>
+		</ul>
+        <div id="user_position">
+            <a href="{{self_center}}" id="login_a">{{ md_name }}</a>
+            <a href="{{login_status}}" id="self_center_a">{{ login_control }}</a>
+        </div>
+	</div>
+	<div id="content">
+		<div id="content_left">
+			<div id="score_list">
+
+            </div>
+		</div>
+		<div id="content_right">
+			<div id="score">
+				<p id="now_score">分数：0</p>
+				<p id="history_best_score">历史分数：0</p>
+			</div>
+			<p id="text_now"></p>
+            <label for="text_in"></label><input id="text_in" type="text" placeholder="请输入">
+    		<p id="text_out"></p>
+    		<button id="btnClear" onclick="clearBestScoreData()">清除数据</button>
+		</div>
+	</div>
+	<div id="footer">
+		<p>2020.11.27 by you friend Yaque</p>
+	</div>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery-3.5.1.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery-3.5.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/index.js') }}"></script>
+    <script type="text/javascript">
+        function getTopList() {
+            $.post({
+                //给哪个页面发送网络请求  url取  域名后面的所有东西
+                'url': '/get_top_list',
+                //data是发送过去的数据s
+                'data':{
+                    'top_list': 'get'
+                },
+                //如果网络请求发送成功，就会执行success里面的函数
+                //请求成功 是状态码等于200就会执行success里面的函数
+                // {#否则执行fail里面的函数#}
+                'success': function(data){
+                     //data是服务器发送过来的数据
+                     //如果服务器发送过来的是json数据，那么JS底层会将json进行解析
+                     //比如 服务器发送过来的是JSON类型的字典，那么JS底层会将JSOn数据转换成一个对象
+                    if(data['code']==200){
+                        console.log(data['message']);
+                        score_list = data['message'];
+                     }else{
+                        // return data['message'];
+                     }
+                     // console.log(data['message']);
+                },
+                //如果网络请求发送失败，就会执行fail里面的函数
+                'fail': function(error){
+                     // console.log(error);
+                    // return data['message'];
+                }
+            });
+        }
+        var score_list = [{md_name:"Yaque", md_username:"20200101", md_score:0},
+            {md_name:"Tem", md_username:"20200101", md_score:1},
+            {md_name:"Bob", md_username:"20200101", md_score:2},
+            {md_name:"TY", md_username:"20200101", md_score:3},
+            {md_name:"从", md_username:"20200101", md_score:4},
+            {md_name:"Y后", md_username:"20200101", md_score:5},
+            {md_name:"儿童", md_username:"20200101", md_score:6},
+            {md_name:"来了", md_username:"20200101", md_score:7}];
+        function onTimeList(){
+	        setInterval(function(){
+	            getTopList();
+	            var i = 0;
+	            var score_data;
+	            var score_list_div = document.getElementById('score_list');
+	            score_list_div.innerHTML = "";
+                for (i = 0; i < score_list.length; i++) {
+                    score_data = score_list[i];
+                    console.log(score_data);
+                    var score_div = document.createElement("div");
+                    var score_span = document.createElement("span");
+                    score_span.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;";
+                    var score_div_name = document.createTextNode(score_data["md_name"]);
+                    var score_div_score = document.createTextNode(score_data["md_score"]);
+                    score_div.appendChild(score_div_name);
+                    score_div.appendChild(score_span);
+                    score_div.appendChild(score_div_score);
+                    score_list_div.appendChild(score_div);
+                }
+            },1000);
+        }
+        onTimeList();
+    </script>
+</body>
+</html>
